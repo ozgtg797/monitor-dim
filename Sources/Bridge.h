@@ -1,0 +1,9 @@
+// Private IOKit symbols used for DDC/CI on Apple Silicon (same ones m1ddc / MonitorControl use).
+#include <CoreFoundation/CoreFoundation.h>
+#include <IOKit/IOKitLib.h>
+
+typedef CFTypeRef IOAVServiceRef;
+
+extern IOAVServiceRef IOAVServiceCreateWithService(CFAllocatorRef allocator, io_service_t service) CF_RETURNS_RETAINED;
+extern IOReturn IOAVServiceReadI2C(IOAVServiceRef service, uint32_t chipAddress, uint32_t offset, void *outputBuffer, uint32_t outputBufferSize);
+extern IOReturn IOAVServiceWriteI2C(IOAVServiceRef service, uint32_t chipAddress, uint32_t dataAddress, void *inputBuffer, uint32_t inputBufferSize);
